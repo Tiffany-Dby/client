@@ -5,6 +5,7 @@ import { AppRoutes } from "@/shared/types/Routes";
 import SettingsView from "@/settings/views/SettingsView";
 import { ROUTES } from "@/shared/constants/routes";
 import LogsView from "@/dashboard/views/LogsView";
+import OverviewView from "@/dashboard/views/OverviewView";
 
 const App = () => {
   const location = useLocation();
@@ -17,6 +18,7 @@ const App = () => {
   return (
     <BaseLayout title={title}>
       <Routes>
+        <Route path={AppRoutes.home} element={<OverviewView />} />
         <Route path={AppRoutes.settings} element={<SettingsView />} />
         <Route path={AppRoutes.dashboardLogs} element={<LogsView />} />
       </Routes>
