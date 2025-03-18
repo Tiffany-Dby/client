@@ -55,7 +55,7 @@ const BaseChart = () => {
         >
           <PieChart>
             <ChartTooltip content={<ChartTooltipContent hideLabel />} />
-            <Pie data={chartData} dataKey="emails" label nameKey="status" />
+            <Pie data={chartData} dataKey="emails" nameKey="status" />
           </PieChart>
         </ChartContainer>
       </CardContent>

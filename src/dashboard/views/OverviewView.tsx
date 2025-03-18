@@ -7,9 +7,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/lib/components/ui/card";
+import BasePendingTable from "../ui/components/BasePendingTable";
 
 const OverviewView = () => {
-  const tableHeads = ["De", "Sujet", "Raison", "Statut"];
+  const tableHeadsBlocked = ["De", "Sujet", "Raison", "Statut"];
   const autoBlockedEmails = [
     {
       from: "example@example.com",
@@ -49,26 +50,49 @@ const OverviewView = () => {
     },
   ];
 
+  const tableHeadsPending = ["De", "Sujet", "Actions"];
+
   return (
     <div>
-      <div className="flex flex-col lg:flex-row gap-4">
-        <BaseChart />
-        <Card className="w-full">
-          <CardHeader>
-            <CardTitle>
-              <h2>Bloqués</h2>
-            </CardTitle>
-            <CardDescription>
-              Les derniers emails automatiquement bloqués
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <BaseBlockedTable
-              tableHeads={tableHeads}
-              list={autoBlockedEmails}
-            />
-          </CardContent>
-        </Card>
+      <div className="flex flex-col  gap-4">
+        <div className="flex flex-col lg:flex-row gap-4">
+          <BaseChart />
+          <Card className="w-full">
+            <CardHeader>
+              <CardTitle>
+                <h2>Bloqués</h2>
+              </CardTitle>
+              <CardDescription>
+                Les derniers emails automatiquement bloqués
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <BaseBlockedTable
+                tableHeads={tableHeadsBlocked}
+                list={autoBlockedEmails}
+              />
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="w-full">
+          <Card className="w-full">
+            <CardHeader>
+              <CardTitle>
+                <h2>En attente</h2>
+              </CardTitle>
+              <CardDescription>
+                Les derniers emails en attente de validation
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <BasePendingTable
+                tableHeads={tableHeadsPending}
+                list={autoBlockedEmails}
+              />
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </div>
   );
