@@ -1,43 +1,45 @@
 import BaseLogsTable from "@/dashboard/ui/components/BaseLogsTable";
 
 const LogsView = () => {
+  const formattedDateTime =
+    new Date().toLocaleDateString("fr-FR") +
+    " " +
+    new Date().toLocaleTimeString("fr-FR", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
   const tableHeads = [
     "Domaine",
     "Date",
-    "Heure",
     "Description",
     "Contenu",
-    "Actions",
+    "Opérations",
   ];
   const list = [
     {
       domain: "example1.com",
-      date: "2025-03-10",
-      hour: "10:30",
+      date: formattedDateTime,
       description: "Lorem ipsum dolor sit.",
       content:
         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid, voluptates?",
     },
     {
-      domain: "example1.com",
-      date: "2025-03-10",
-      hour: "10:30",
+      domain: "example2.com",
+      date: formattedDateTime,
       description: "Lorem ipsum dolor sit.",
       content:
         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid, voluptates?",
     },
     {
-      domain: "example1.com",
-      date: "2025-03-10",
-      hour: "10:30",
+      domain: "example3.com",
+      date: formattedDateTime,
       description: "Lorem ipsum dolor sit.",
       content:
         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid, voluptates?",
     },
     {
-      domain: "example1.com",
-      date: "2025-03-10",
-      hour: "10:30",
+      domain: "example4.com",
+      date: formattedDateTime,
       description: "Lorem ipsum dolor sit.",
       content:
         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid, voluptates?",

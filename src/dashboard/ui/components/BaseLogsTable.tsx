@@ -29,7 +29,6 @@ const BaseLogsTable = ({ tableHeads, list }: Props) => {
           <TableRow key={elt.domain + elt.date}>
             <TableCell>{elt.domain}</TableCell>
             <TableCell>{elt.date}</TableCell>
-            <TableCell>{elt.hour}</TableCell>
             <TableCell>{elt.description}</TableCell>
             <TableCell>{elt.content}</TableCell>
             <TableCell>
