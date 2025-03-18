@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import BaseLogsTable from "@/dashboard/ui/components/BaseLogsTable";
 import {
   Card,
@@ -7,50 +8,21 @@ import {
 } from "@/lib/components/ui/card";
 
 const LogsView = () => {
-  const formattedDateTime =
-    new Date().toLocaleDateString("fr-FR") +
-    " " +
-    new Date().toLocaleTimeString("fr-FR", {
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-  const tableHeads = [
-    "Domaine",
-    "Date",
-    "Description",
-    "Contenu",
-    "Opérations",
-  ];
-  const list = [
-    {
-      domain: "example1.com",
-      date: formattedDateTime,
-      description: "Lorem ipsum dolor sit.",
-      content:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid, voluptates?",
-    },
-    {
-      domain: "example2.com",
-      date: formattedDateTime,
-      description: "Lorem ipsum dolor sit.",
-      content:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid, voluptates?",
-    },
-    {
-      domain: "example3.com",
-      date: formattedDateTime,
-      description: "Lorem ipsum dolor sit.",
-      content:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid, voluptates?",
-    },
-    {
-      domain: "example4.com",
-      date: formattedDateTime,
-      description: "Lorem ipsum dolor sit.",
-      content:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid, voluptates?",
-    },
-  ];
+  const tableHeads = ["Domaine", "Date", "Description", "Contenu", "Opérations", "Statut"];
+
+  useEffect(() => {
+    const fetchLogs = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/logs");
+        const data = await response.json();
+        setLogs(data);  // Mettre à jour l'état des logs avec les données récupérées
+      } catch (error) {
+        console.error("Erreur lors de la récupération des logs :", error);
+      }
+    };
+
+    fetchLogs();  // Appeler la fonction pour récupérer les logs
+  }, []);
 
   return (
     <Card>
