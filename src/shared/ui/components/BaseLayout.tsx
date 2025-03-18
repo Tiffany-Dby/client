@@ -1,4 +1,5 @@
 import { Button } from "@/lib/components/ui/button";
+import { ModeToggle } from "@/lib/components/ui/mode-toggle";
 import { Separator } from "@/lib/components/ui/separator";
 import { SidebarProvider, SidebarTrigger } from "@/lib/components/ui/sidebar";
 import AppSidebar2 from "@/shared/ui/components/AppSidebar";
@@ -19,7 +20,8 @@ const BaseLayout = ({ title = "Test", children }: Props) => {
         <header>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 py-4">
-              <SidebarTrigger className="-ml-1" />
+              <SidebarTrigger className="-ml-1 border" />
+              <ModeToggle />
               <Separator orientation="vertical" className="mr-2 !h-4" />
               <h1>{title}</h1>
             </div>
