@@ -6,8 +6,8 @@ const ROUTES = {
     path: AppRoutes.home,
   },
   pending: {
-    title: "En attente",
-    path: AppRoutes.dashboardPending,
+    title: "Refusé",
+    path: AppRoutes.emailRemove,
   },
   logs: {
     title: "Historique",

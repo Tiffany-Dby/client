@@ -1,3 +1,4 @@
+import { Button } from "@/lib/components/ui/button";
 import {
   Table,
   TableBody,
@@ -6,6 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/lib/components/ui/table";
+import { CheckIcon } from "lucide-react";
 import { SquareCheckBigIcon, SquareXIcon } from "lucide-react";
 
 interface Props {
@@ -46,6 +48,11 @@ const BaseBlockedTable = ({ tableHeads, list }: Props) => {
               ) : (
                 <SquareXIcon className="text-destructive" />
               )}
+            </TableCell>
+            <TableCell className="flex gap-4">
+              <Button className="bg-green-500 text-white hover:bg-green-600">
+                <CheckIcon /> Approuver
+              </Button>
             </TableCell>
           </TableRow>
         ))}
