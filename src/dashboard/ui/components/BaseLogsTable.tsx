@@ -6,10 +6,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/lib/components/ui/table";
-/*
-import { AppRoutes } from "@/shared/types/Routes";
-import { Link } from "react-router";
-*/
 
 interface Props {
   tableHeads: string[];
@@ -44,14 +40,4 @@ const BaseLogsTable = ({ tableHeads, list }: Props) => {
   );
 };
 
-/*
-            <TableCell>
-              <Link
-                className="px-4 py-1.5 bg-primary rounded-md text-primary-foreground"
-                to={`${AppRoutes.review}/${elt.id}`}
-              >
-                Revue
-              </Link>
-            </TableCell>
-*/
 export default BaseLogsTable;

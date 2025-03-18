@@ -129,11 +129,10 @@ app.get('/emailchecked/envoye/details', (req, res) => {
       return res.status(500).json({ error: "Erreur lors de la récupération des emails envoyés" });
     }
 
-    res.json(results); // Renvoie les détails des emails envoyés
+    res.json(results);
   });
 });
 
-// Route pour récupérer les emails en attente
 app.get('/emails/en-attente/details', (req, res) => {
   const query = `SELECT * FROM email WHERE status = 'en attente'`;
 
@@ -143,11 +142,10 @@ app.get('/emails/en-attente/details', (req, res) => {
       return res.status(500).json({ error: "Erreur lors de la récupération des emails en attente" });
     }
 
-    res.json(results); // Renvoie les détails des emails en attente
+    res.json(results);
   });
 });
 
-// Route pour récupérer le nombre d'emails en attente
 app.get('/emails/en-attente/count', (req, res) => {
   const query = `SELECT COUNT(*) AS count FROM email WHERE status = 'en attente'`;
 
@@ -157,7 +155,7 @@ app.get('/emails/en-attente/count', (req, res) => {
       return res.status(500).json({ error: "Erreur lors de la récupération du nombre d'emails en attente" });
     }
 
-    res.json({ count: results[0].count }); // Renvoie le nombre d'emails en attente
+    res.json({ count: results[0].count });
   });
 });
 

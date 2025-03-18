@@ -6,6 +6,7 @@ import SettingsView from "@/settings/views/SettingsView";
 import { ROUTES } from "@/shared/constants/routes";
 import LogsView from "@/dashboard/views/LogsView";
 import OverviewView from "@/dashboard/views/OverviewView";
+import EmailRemoveView from "@/dashboard/views/EmailRemoveView";
 
 const App = () => {
   const location = useLocation();
@@ -21,6 +22,7 @@ const App = () => {
         <Route path={AppRoutes.home} element={<OverviewView />} />
         <Route path={AppRoutes.settings} element={<SettingsView />} />
         <Route path={AppRoutes.dashboardLogs} element={<LogsView />} />
+        <Route path={AppRoutes.emailRemove} element={<EmailRemoveView />} />
       </Routes>
     </BaseLayout>
   );

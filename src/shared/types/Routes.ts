@@ -1,6 +1,6 @@
 enum AppRoutes {
   home = "/",
-  dashboardRemove = "/remove",
+  emailRemove = "/remove",
   dashboardLogs = "/logs",
   settings = "/settings",
   review = "/review",
