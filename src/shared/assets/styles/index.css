@@ -118,13 +118,6 @@
   body {
     @apply bg-background text-foreground;
   }
-
-  html,
-  body,
-  #root,
-  main {
-    @apply flex flex-col flex-[1_0] min-h-full;
-  }
 }
 
 @utility flex-center-center {
