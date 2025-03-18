@@ -18,6 +18,7 @@ type List = {
   subject: string;
   reason: string;
   report: boolean;
+  content: string;
 };
 
 const BaseBlockedTable = ({ tableHeads, list }: Props) => {
@@ -37,6 +38,7 @@ const BaseBlockedTable = ({ tableHeads, list }: Props) => {
             <TableCell className="max-w-[100px] truncate">
               {elt.subject}
             </TableCell>
+            <TableCell className="max-w-32 truncate">{elt.content}</TableCell>
             <TableCell>{elt.reason}</TableCell>
             <TableCell>
               {elt.report ? (

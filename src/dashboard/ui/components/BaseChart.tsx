@@ -1,4 +1,5 @@
 import { Pie, PieChart } from "recharts";
+import { useEffect, useState } from "react";
 
 import {
   Card,
@@ -15,13 +16,66 @@ import {
   ChartTooltipContent,
 } from "@/lib/components/ui/chart";
 
-const BaseChart = () => {
-  const chartData = [
-    { status: "blocked", emails: 75, fill: "var(--chart-1)" },
-    { status: "pending", emails: 20, fill: "var(--chart-2)" },
-    { status: "accepted", emails: 87, fill: "var(--chart-3)" },
-  ];
+interface EmailCount {
+  count: number;
+}
 
+const BaseChart = () => {
+  const [emailBlocked, setEmailBlocked] = useState<EmailCount>({ count: 0 });
+
+useEffect(() => {
+  const fetchLogs = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/emailchecked/non-envoye/count");
+      const data = await response.json();
+      setEmailBlocked(data);  // Mettre à jour l'état des logs avec les données récupérées
+    } catch (error) {
+      console.error("Erreur lors de la récupération des logs :", error);
+    }
+  };
+
+  fetchLogs();  // Appeler la fonction pour récupérer les logs
+}, []);
+
+const [emailPendind, setEmailPendind] = useState<EmailCount>({ count: 0 });
+
+useEffect(() => {
+  const fetchLogs = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/emails/en-attente/count");
+      const data = await response.json();
+      setEmailPendind(data);  // Mettre à jour l'état des logs avec les données récupérées
+    } catch (error) {
+      console.error("Erreur lors de la récupération des logs :", error);
+    }
+  };
+
+  fetchLogs();  // Appeler la fonction pour récupérer les logs
+}, []);
+
+const [emailSend, setEmailSend] = useState<EmailCount>({ count: 0 });
+
+useEffect(() => {
+  const fetchLogs = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/emailchecked/envoye/count");
+      const data = await response.json();
+      setEmailSend(data);  // Mettre à jour l'état des logs avec les données récupérées
+    } catch (error) {
+      console.error("Erreur lors de la récupération des logs :", error);
+    }
+  };
+
+  fetchLogs();  // Appeler la fonction pour récupérer les logs
+}, []);
+  const chartData = [
+    { status: "blocked", emails: emailBlocked.count, fill: "var(--chart-1)" },
+    { status: "pending", emails: emailPendind.count, fill: "var(--chart-2)" },
+    { status: "accepted", emails: emailSend.count, fill: "var(--chart-3)" },
+  ];
+  console.log(emailBlocked);
+  console.log(emailPendind);
+  console.log(emailSend);
   const chartConfig = {
     emails: {
       label: "Emails",
@@ -62,9 +116,6 @@ const BaseChart = () => {
       <CardFooter className="flex-col gap-2 text-sm">
         <div className="flex items-center gap-2 font-medium leading-none">
           <p>Répartition des statuts des emails </p>
-        </div>
-        <div className="leading-none text-muted-foreground">
-          Aperçu sur les 3 derniers mois
         </div>
       </CardFooter>
     </Card>

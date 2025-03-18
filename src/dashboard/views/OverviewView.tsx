@@ -8,49 +8,42 @@ import {
   CardTitle,
 } from "@/lib/components/ui/card";
 import BasePendingTable from "../ui/components/BasePendingTable";
+import { useEffect, useState } from "react";
 
 const OverviewView = () => {
-  const tableHeadsBlocked = ["De", "Sujet", "Raison", "Statut"];
-  const autoBlockedEmails = [
-    {
-      from: "example@example.com",
-      subject: "Important update about your account",
-      reason: "Spam detection",
-      report: true,
-    },
-    {
-      from: "suspicious@suspicious-site.org",
-      subject: "Confirm your account details",
-      reason: "Phishing attempt",
-      report: true,
-    },
-    {
-      from: "untrusted@untrusted-sender.net",
-      subject: "Your weekly newsletter",
-      reason: "Spam detection",
-      report: true,
-    },
-    {
-      from: "random@random-domain.xyz",
-      subject: "Invoice details for your purchase",
-      reason: "Malware detection",
-      report: true,
-    },
-    {
-      from: "mlwr@random-domain.xyz",
-      subject: "Invoice details for your purchase",
-      reason: "Malware detection",
-      report: true,
-    },
-    {
-      from: "phsing@random-domain.xyz",
-      subject: "Invoice details for your purchase",
-      reason: "Phishing attempt",
-      report: true,
-    },
-  ];
+  const tableHeadsBlocked = ["De", "Sujet", "Contenu", "Raison", "Statut"];
+  const [autoBlockedEmails, setAutoBlockedEmails] = useState([]);
+  
+    useEffect(() => {
+      const fetchLogs = async () => {
+        try {
+          const response = await fetch("http://localhost:5000/emailchecked/non-envoye/details");
+          const data = await response.json();
+          setAutoBlockedEmails(data);  // Mettre à jour l'état des logs avec les données récupérées
+        } catch (error) {
+          console.error("Erreur lors de la récupération des logs :", error);
+        }
+      };
+  
+      fetchLogs();  // Appeler la fonction pour récupérer les logs
+    }, []);
 
-  const tableHeadsPending = ["De", "Sujet", "Actions"];
+  const tableHeadsPending = ["De", "Sujet", "Contenu","Actions"];
+  const [pendingEmails, setPendingEmails] = useState([]);
+
+  useEffect(() => {
+    const fetchLogs = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/emails/en-attente/details");
+        const data = await response.json();
+        setPendingEmails(data);  // Mettre à jour l'état des logs avec les données récupérées
+      } catch (error) {
+        console.error("Erreur lors de la récupération des logs :", error);
+      }
+    };
+
+    fetchLogs();  // Appeler la fonction pour récupérer les logs
+  }, []);
 
   return (
     <div>
@@ -88,7 +81,7 @@ const OverviewView = () => {
             <CardContent>
               <BasePendingTable
                 tableHeads={tableHeadsPending}
-                list={autoBlockedEmails}
+                list={pendingEmails}
               />
             </CardContent>
           </Card>

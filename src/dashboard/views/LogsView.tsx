@@ -9,6 +9,7 @@ import {
 
 const LogsView = () => {
   const tableHeads = ["Domaine", "Date", "Description", "Contenu", "Opérations", "Statut"];
+  const [logs, setLogs] = useState([]);
 
   useEffect(() => {
     const fetchLogs = async () => {
@@ -32,7 +33,7 @@ const LogsView = () => {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <BaseLogsTable tableHeads={tableHeads} list={list} />
+        <BaseLogsTable tableHeads={tableHeads} list={logs} />
       </CardContent>
     </Card>
   );

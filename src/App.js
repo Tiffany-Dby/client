@@ -77,6 +77,90 @@ app.get('/logs', (req, res) => {
   });
 });
 
+// Route pour récupérer le nombre d'emails avec status 'non envoyé'
+app.get('/emailchecked/non-envoye/count', (req, res) => {
+  const query = `SELECT COUNT(*) AS count FROM emailchecked WHERE status = 'non envoyé'`;
+
+  connection.query(query, (err, results) => {
+    if (err) {
+      console.error("Erreur lors de la récupération du nombre d'emails non envoyés:", err);
+      return res.status(500).json({ error: "Erreur lors de la récupération du nombre d'emails non envoyés" });
+    }
+
+    res.json({ count: results[0].count }); // Renvoie le nombre d'emails non envoyés
+  });
+});
+
+// Route pour récupérer les emails complets avec status 'non envoyé'
+app.get('/emailchecked/non-envoye/details', (req, res) => {
+  const query = `SELECT * FROM emailchecked WHERE status = 'non envoyé'`;
+
+  connection.query(query, (err, results) => {
+    if (err) {
+      console.error("Erreur lors de la récupération des emails non envoyés:", err);
+      return res.status(500).json({ error: "Erreur lors de la récupération des emails non envoyés" });
+    }
+
+    res.json(results); // Renvoie les détails des emails non envoyés
+  });
+});
+
+// Route pour récupérer le nombre d'emails avec status 'envoyé'
+app.get('/emailchecked/envoye/count', (req, res) => {
+  const query = `SELECT COUNT(*) AS count FROM emailchecked WHERE status = 'envoyé'`;
+
+  connection.query(query, (err, results) => {
+    if (err) {
+      console.error("Erreur lors de la récupération du nombre d'emails envoyés:", err);
+      return res.status(500).json({ error: "Erreur lors de la récupération du nombre d'emails envoyés" });
+    }
+
+    res.json({ count: results[0].count }); // Renvoie le nombre d'emails envoyés
+  });
+});
+
+// Route pour récupérer les emails complets avec status 'envoyé'
+app.get('/emailchecked/envoye/details', (req, res) => {
+  const query = `SELECT * FROM emailchecked WHERE status = 'envoyé'`;
+
+  connection.query(query, (err, results) => {
+    if (err) {
+      console.error("Erreur lors de la récupération des emails envoyés:", err);
+      return res.status(500).json({ error: "Erreur lors de la récupération des emails envoyés" });
+    }
+
+    res.json(results); // Renvoie les détails des emails envoyés
+  });
+});
+
+// Route pour récupérer les emails en attente
+app.get('/emails/en-attente/details', (req, res) => {
+  const query = `SELECT * FROM email WHERE status = 'en attente'`;
+
+  connection.query(query, (err, results) => {
+    if (err) {
+      console.error("Erreur lors de la récupération des emails en attente:", err);
+      return res.status(500).json({ error: "Erreur lors de la récupération des emails en attente" });
+    }
+
+    res.json(results); // Renvoie les détails des emails en attente
+  });
+});
+
+// Route pour récupérer le nombre d'emails en attente
+app.get('/emails/en-attente/count', (req, res) => {
+  const query = `SELECT COUNT(*) AS count FROM email WHERE status = 'en attente'`;
+
+  connection.query(query, (err, results) => {
+    if (err) {
+      console.error("Erreur lors de la récupération du nombre d'emails en attente:", err);
+      return res.status(500).json({ error: "Erreur lors de la récupération du nombre d'emails en attente" });
+    }
+
+    res.json({ count: results[0].count }); // Renvoie le nombre d'emails en attente
+  });
+});
+
 
 app.listen(port, () => {
   console.log(`Serveur backend démarré sur http://localhost:${port}`);

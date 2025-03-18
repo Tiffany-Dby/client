@@ -17,6 +17,7 @@ interface Props {
 type List = {
   from: string;
   subject: string;
+  content: string;
 };
 
 const BasePendingTable = ({ tableHeads, list }: Props) => {
@@ -36,6 +37,7 @@ const BasePendingTable = ({ tableHeads, list }: Props) => {
             <TableCell className="max-w-[100px] truncate">
               {elt.subject}
             </TableCell>
+            <TableCell className="max-w-32 truncate">{elt.content}</TableCell>
             <TableCell className="flex gap-4">
               <Button>
                 <CheckIcon /> Approuver
