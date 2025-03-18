@@ -44,10 +44,18 @@ const SettingsView = () => {
         <TabsTrigger value="blacklist">Liste noire</TabsTrigger>
       </TabsList>
       <TabsContent value="whitelist">
-        <BaseSettingsTable tableHeads={tableHeads} list={whitelist} />
+        <BaseSettingsTable
+          tableHeads={tableHeads}
+          list={whitelist}
+          btnClick={() => {}}
+        />
       </TabsContent>
       <TabsContent value="blacklist">
-        <BaseSettingsTable tableHeads={tableHeads} list={blacklist} />
+        <BaseSettingsTable
+          tableHeads={tableHeads}
+          list={blacklist}
+          btnClick={() => {}}
+        />
       </TabsContent>
     </Tabs>
   );

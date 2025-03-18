@@ -11,9 +11,10 @@ import {
 interface Props {
   tableHeads: string[];
   list: Record<string, string>[];
+  btnClick: () => void;
 }
 
-const BaseSettingsTable = ({ tableHeads, list }: Props) => {
+const BaseSettingsTable = ({ tableHeads, list, btnClick }: Props) => {
   return (
     <Table>
       <TableHeader>
@@ -29,7 +30,9 @@ const BaseSettingsTable = ({ tableHeads, list }: Props) => {
             <TableCell>{elt.domain}</TableCell>
             <TableCell>{elt.addedAt}</TableCell>
             <TableCell className="min-w-fit max-w-0">
-              <Button variant={"destructive"}>Supprimer</Button>
+              <Button variant={"destructive"} onClick={btnClick}>
+                Supprimer
+              </Button>
             </TableCell>
           </TableRow>
         ))}
