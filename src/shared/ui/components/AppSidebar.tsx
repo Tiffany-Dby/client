@@ -34,6 +34,10 @@ const AppSidebar = ({ isOpen }: Props) => {
           url: AppRoutes.home,
         },
         {
+          title: "En attente",
+          url: AppRoutes.dashboardPending,
+        },
+        {
           title: "Bloqué",
           url: AppRoutes.emailRemove,
         },
