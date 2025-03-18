@@ -1,0 +1,101 @@
+import BaseChart from "@/dashboard/ui/components/BaseChart";
+import BaseBlockedTable from "../ui/components/BaseBlockedTable";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/lib/components/ui/card";
+import BasePendingTable from "../ui/components/BasePendingTable";
+
+const OverviewView = () => {
+  const tableHeadsBlocked = ["De", "Sujet", "Raison", "Statut"];
+  const autoBlockedEmails = [
+    {
+      from: "example@example.com",
+      subject: "Important update about your account",
+      reason: "Spam detection",
+      report: true,
+    },
+    {
+      from: "suspicious@suspicious-site.org",
+      subject: "Confirm your account details",
+      reason: "Phishing attempt",
+      report: true,
+    },
+    {
+      from: "untrusted@untrusted-sender.net",
+      subject: "Your weekly newsletter",
+      reason: "Spam detection",
+      report: true,
+    },
+    {
+      from: "random@random-domain.xyz",
+      subject: "Invoice details for your purchase",
+      reason: "Malware detection",
+      report: true,
+    },
+    {
+      from: "mlwr@random-domain.xyz",
+      subject: "Invoice details for your purchase",
+      reason: "Malware detection",
+      report: true,
+    },
+    {
+      from: "phsing@random-domain.xyz",
+      subject: "Invoice details for your purchase",
+      reason: "Phishing attempt",
+      report: true,
+    },
+  ];
+
+  const tableHeadsPending = ["De", "Sujet", "Actions"];
+
+  return (
+    <div>
+      <div className="flex flex-col  gap-4">
+        <div className="flex flex-col lg:flex-row gap-4">
+          <BaseChart />
+          <Card className="w-full">
+            <CardHeader>
+              <CardTitle>
+                <h2>Bloqués</h2>
+              </CardTitle>
+              <CardDescription>
+                Les derniers emails automatiquement bloqués
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <BaseBlockedTable
+                tableHeads={tableHeadsBlocked}
+                list={autoBlockedEmails}
+              />
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="w-full">
+          <Card className="w-full">
+            <CardHeader>
+              <CardTitle>
+                <h2>En attente</h2>
+              </CardTitle>
+              <CardDescription>
+                Les derniers emails en attente de validation
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <BasePendingTable
+                tableHeads={tableHeadsPending}
+                list={autoBlockedEmails}
+              />
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default OverviewView;

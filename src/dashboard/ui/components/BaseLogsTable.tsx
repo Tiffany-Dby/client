@@ -29,8 +29,10 @@ const BaseLogsTable = ({ tableHeads, list }: Props) => {
           <TableRow key={elt.domain + elt.date}>
             <TableCell>{elt.domain}</TableCell>
             <TableCell>{elt.date}</TableCell>
-            <TableCell>{elt.description}</TableCell>
-            <TableCell>{elt.content}</TableCell>
+            <TableCell className="max-w-32 truncate">
+              {elt.description}
+            </TableCell>
+            <TableCell className="max-w-32 truncate">{elt.content}</TableCell>
             <TableCell>
               <Link
                 className="px-4 py-1.5 bg-primary rounded-md text-primary-foreground"

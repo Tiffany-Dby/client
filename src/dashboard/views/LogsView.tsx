@@ -1,4 +1,10 @@
 import BaseLogsTable from "@/dashboard/ui/components/BaseLogsTable";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/lib/components/ui/card";
 
 const LogsView = () => {
   const formattedDateTime =
@@ -46,7 +52,18 @@ const LogsView = () => {
     },
   ];
 
-  return <BaseLogsTable tableHeads={tableHeads} list={list} />;
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>
+          <h2>Logs</h2>
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        <BaseLogsTable tableHeads={tableHeads} list={list} />
+      </CardContent>
+    </Card>
+  );
 };
 
 export default LogsView;
