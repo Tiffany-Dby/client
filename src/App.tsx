@@ -6,6 +6,7 @@ import SettingsView from "@/settings/views/SettingsView";
 import { ROUTES } from "@/shared/constants/routes";
 import LogsView from "@/dashboard/views/LogsView";
 import OverviewView from "@/dashboard/views/OverviewView";
+import PendingView from "@/dashboard/views/PendingView";
 
 const App = () => {
   const location = useLocation();
@@ -19,8 +20,9 @@ const App = () => {
     <BaseLayout title={title}>
       <Routes>
         <Route path={AppRoutes.home} element={<OverviewView />} />
-        <Route path={AppRoutes.settings} element={<SettingsView />} />
+        <Route path={AppRoutes.dashboardPending} element={<PendingView />} />
         <Route path={AppRoutes.dashboardLogs} element={<LogsView />} />
+        <Route path={AppRoutes.settings} element={<SettingsView />} />
       </Routes>
     </BaseLayout>
   );
