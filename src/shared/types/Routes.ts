@@ -3,6 +3,7 @@ enum AppRoutes {
   dashboardPending = "/pending",
   dashboardLogs = "/logs",
   settings = "/settings",
+  review = "/review",
 }
 
 export enum ApiRoutes {
