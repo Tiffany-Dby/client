@@ -5,9 +5,13 @@ const ROUTES = {
     title: "Aperçu",
     path: AppRoutes.home,
   },
-  pending: {
+  bocked: {
     title: "Refusé",
     path: AppRoutes.emailRemove,
+  },
+  pending: {
+    title: "En Attente",
+    path: AppRoutes.dashboardPending,
   },
   logs: {
     title: "Historique",
