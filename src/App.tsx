@@ -7,6 +7,7 @@ import { ROUTES } from "@/shared/constants/routes";
 import LogsView from "@/dashboard/views/LogsView";
 import OverviewView from "@/dashboard/views/OverviewView";
 import PendingView from "@/dashboard/views/PendingView";
+import NotFound from "@/shared/view/NotFound";
 
 const App = () => {
   const location = useLocation();
@@ -23,6 +24,7 @@ const App = () => {
         <Route path={AppRoutes.dashboardPending} element={<PendingView />} />
         <Route path={AppRoutes.dashboardLogs} element={<LogsView />} />
         <Route path={AppRoutes.settings} element={<SettingsView />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BaseLayout>
   );
