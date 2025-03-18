@@ -41,9 +41,11 @@ const BaseChart = () => {
   } satisfies ChartConfig;
 
   return (
-    <Card className="flex flex-col mx-auto md:mx-0 w-full max-w-96">
+    <Card className="flex flex-col mx-auto lg:mx-0 w-full max-w-96">
       <CardHeader className="items-center pb-0">
-        <CardTitle>Statistiques</CardTitle>
+        <CardTitle>
+          <h2>Statistiques</h2>
+        </CardTitle>
         <CardDescription>January - Mars 2025</CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-0">

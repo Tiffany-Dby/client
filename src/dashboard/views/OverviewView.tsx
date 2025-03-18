@@ -51,13 +51,15 @@ const OverviewView = () => {
 
   return (
     <div>
-      <div className="flex flex-col md:flex-row gap-4">
+      <div className="flex flex-col lg:flex-row gap-4">
         <BaseChart />
         <Card className="w-full">
           <CardHeader>
-            <CardTitle>Bloqués</CardTitle>
+            <CardTitle>
+              <h2>Bloqués</h2>
+            </CardTitle>
             <CardDescription>
-              Les derniers emails qui ont été automatiquement bloqués
+              Les derniers emails automatiquement bloqués
             </CardDescription>
           </CardHeader>
           <CardContent>
